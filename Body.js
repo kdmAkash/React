@@ -1,4 +1,5 @@
 
+
 import Cards from "./Cards";
 import React,{useState,useEffect} from "react";
 import Shimmer from "./Shimmer"
@@ -7,6 +8,8 @@ const Body = () => {
 
   //for changing the state
   const [data , setData] = useState([]);
+  const [searchText,setSearchText]=useState("");
+  const [filrerData,setFilterData]=useState([]);
 
 
   //load-function call whenever component render
@@ -18,11 +21,12 @@ const Body = () => {
   async function  fetchData()
   {
     const call=await 
-    fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.30080&lng=73.20430&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.30080&lng=73.20430&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
     const result=await call.json();
     const arr=result?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     setData(arr);
-
+    setFilterData(arr);
   }
   //conditional rendering
   if(data.length===0)
@@ -33,17 +37,27 @@ const Body = () => {
       return (
       <div className="body">
         <div className="search">
-          <h3>Search</h3>
-          <input type="text" />
+          <button onClick={()=>{
+           const searchdata= data.filter((res)=>{
+              return res.info.name.toLowerCase().includes(searchText.toLowerCase());
+            })
+            setFilterData(searchdata);
+          }}>Search</button>
+          <input type="text" value={searchText} onChange={(e)=>{
+            setSearchText(e.target.value);
+          
+          }}/>
+
+
           <button onClick={()=>{
           const res=data.filter((res)=>{
              return res.info.avgRating > 4.4;
             })
-              setData(res);
+              setFilterData(res);
           }}>Top rated Restarunt</button>
         </div>
         <div className="cards">
-          {data.map((res)=><Cards  data={res} key={res.info.id} />)}
+          {filrerData.map((res)=><Cards  data={res} key={res.info.id} />)}
         </div>
       </div>
     );
