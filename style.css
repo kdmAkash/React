@@ -64,6 +64,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    
   }
   
   .card-items {
@@ -71,13 +72,13 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 200px;
+    width: 250px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    box-sizing: border-box; /* Ensures padding is included in the width */
+    box-sizing: border-box; 
   }
   
   .card-items img {
@@ -99,9 +100,9 @@ body {
     margin: 5px 0;
   }
   
-  /* Remove any fixed height and allow the card to grow as per content */
+  
   .card-items {
-    height: auto; /* Let the card expand based on its content */
+    height: 300px; 
   }
   button{
     margin:10px;
@@ -112,3 +113,63 @@ body {
     cursor: pointer;
   }
   
+.shimmer-container{
+     display: flex;
+     flex-wrap: wrap;
+     gap: 10px;
+  }
+
+  .shimmer-cards{
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    height: 200px;
+  }
+  
+
+  .login{
+    height: 30px;
+    width: 50px;
+    background-color: #ede0e0;
+    color: black;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  /* RestaurantMenu.css */
+.resmenu {
+  text-align: center;
+  margin: 20px;
+}
+
+.resmenu h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #ff6347; /* Tomato color */
+}
+
+.resmenu h3, h4 {
+  color: #555;
+}
+
+.resmenu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resmenu li {
+  background-color: #f9f9f9;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.resmenu h4 {
+  font-size: 1rem;
+  color: #888;
+}
