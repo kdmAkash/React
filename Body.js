@@ -3,6 +3,7 @@
 import Cards from "./Cards";
 import React,{useState,useEffect} from "react";
 import Shimmer from "./Shimmer"
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -55,9 +56,13 @@ const Body = () => {
             })
               setFilterData(res);
           }}>Top rated Restarunt</button>
-        </div>
+        </div>   
         <div className="cards">
-          {filrerData.map((res)=><Cards  data={res} key={res.info.id} />)}
+          {filrerData.map((res)=>{
+          return <Link to={"/restaurant/"+res.info.id}  key={res.info.id} style={{textDecoration:"none"}}>
+            <Cards  data={res} />
+            </Link>
+})}
         </div>
       </div>
     );
